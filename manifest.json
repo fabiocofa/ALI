@@ -1,0 +1,15 @@
+{
+  "name": "ALI",
+  "short_name": "ALI",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#f6f0e8",
+  "theme_color": "#23443f",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
