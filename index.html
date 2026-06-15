@@ -32,6 +32,19 @@ body{
     color:var(--text);
     min-height:100vh;
     padding:20px;
+    body::before{
+    content:"";
+    position:fixed;
+    top:80px;
+    left:50%;
+    transform:translateX(-50%);
+    width:450px;
+    height:450px;
+    background:url('ali.png') center center no-repeat;
+    background-size:contain;
+    opacity:0.04;
+    pointer-events:none;
+    z-index:0;
 }
 
 .container{
