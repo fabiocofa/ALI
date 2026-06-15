@@ -3,21 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>ALI - La forza di volare</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
+
 :root{
-    --bg:#f8f4f1;
-    --card:#ffffff;
-    --primary:#b98d7a;
-    --primary-dark:#9c7361;
-    --secondary:#e8d8cf;
-    --text:#2f2a28;
-    --text-light:#6f6865;
-    --shadow:0 12px 35px rgba(0,0,0,.08);
-    --radius:24px;
+    --petrol:#0D5B61;
+    --petrol-dark:#083E43;
+    --aqua:#A7DCD5;
+    --aqua-dark:#73C8C1;
+    --sand:#EFE2D5;
+    --ivory:#F8F2EC;
+    --text:#112326;
+    --text-light:#647478;
+
+    --radius:28px;
+
+    --shadow:
+    0 15px 40px rgba(13,91,97,.08);
 }
 
 *{
@@ -26,468 +35,538 @@
     box-sizing:border-box;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
     font-family:'Inter',sans-serif;
-    background:linear-gradient(180deg,#faf7f5 0%,#f3ebe7 100%);
+    background:var(--ivory);
     color:var(--text);
     min-height:100vh;
-    padding:20px;
+    position:relative;
+    overflow-x:hidden;
+}
+
+/* ALI watermark */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+    url("ali.png")
+    center center
+    no-repeat;
+
+    background-size:420px;
+
+    opacity:.035;
+
+    pointer-events:none;
+
+    z-index:0;
 }
 
 .container{
+
     width:100%;
-    max-width:850px;
+    max-width:900px;
+
     margin:0 auto;
+
+    padding:20px;
+
+    position:relative;
+
+    z-index:2;
 }
 
+/* DECORAZIONI */
+
+.decor-top{
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:220px;
+    height:220px;
+
+    background:
+    radial-gradient(
+        circle at top left,
+        rgba(13,91,97,.18),
+        rgba(13,91,97,0)
+    );
+
+    pointer-events:none;
+}
+
+.decor-bottom{
+
+    position:absolute;
+
+    right:0;
+    bottom:0;
+
+    width:260px;
+    height:260px;
+
+    background:
+    radial-gradient(
+        circle at bottom right,
+        rgba(13,91,97,.15),
+        rgba(13,91,97,0)
+    );
+
+    pointer-events:none;
+}
+
+.dots-top{
+
+    position:absolute;
+
+    right:10px;
+    top:40px;
+
+    width:80px;
+    height:80px;
+
+    background-image:
+    radial-gradient(
+        var(--petrol) 1.5px,
+        transparent 1.5px
+    );
+
+    background-size:16px 16px;
+
+    opacity:.5;
+
+    pointer-events:none;
+}
+
+.dots-bottom{
+
+    position:absolute;
+
+    left:10px;
+    bottom:220px;
+
+    width:80px;
+    height:80px;
+
+    background-image:
+    radial-gradient(
+        var(--petrol) 1.5px,
+        transparent 1.5px
+    );
+
+    background-size:16px 16px;
+
+    opacity:.5;
+
+    pointer-events:none;
+}
+
+/* HERO */
+
 .hero{
+
     text-align:center;
-    margin-bottom:24px;
+
+    padding-top:20px;
+
+    margin-bottom:30px;
 }
 
 .logo{
+
     width:90px;
     height:90px;
+
     object-fit:contain;
-    margin:10px auto 15px;
+
     display:block;
+
+    margin:0 auto 16px;
 }
 
 h1{
-    font-family:'Playfair Display',serif;
-    font-size:3rem;
-    font-weight:700;
-    color:var(--primary-dark);
+
+    font-family:'Oswald',sans-serif;
+
+    font-size:4rem;
+
+    line-height:1;
+
+    letter-spacing:1px;
+
+    color:var(--petrol-dark);
+
+    margin-bottom:8px;
 }
 
 .subtitle{
-    margin-top:8px;
-    color:var(--text-light);
+
+    color:var(--petrol);
+
+    font-weight:600;
+
     font-size:1rem;
-    letter-spacing:.5px;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+    margin-bottom:18px;
 }
 
+.hero-copy{
+
+    max-width:360px;
+
+    margin:0 auto;
+
+    color:var(--text-light);
+
+    line-height:1.8;
+
+    font-size:1rem;
+}
+
+/* CARD */
+
 .card{
-    background:var(--card);
+
+    background:var(--sand);
+
     border-radius:var(--radius);
+
     padding:24px;
-    margin-bottom:18px;
+
+    margin-bottom:20px;
+
     box-shadow:var(--shadow);
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.card::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    right:0;
+    top:0;
+
+    height:5px;
+
+    background:var(--petrol);
+}
+
+.section-label{
+
+    display:inline-block;
+
+    background:var(--aqua);
+
+    color:var(--petrol-dark);
+
+    font-weight:700;
+
+    font-size:.85rem;
+
+    letter-spacing:.5px;
+
+    text-transform:uppercase;
+
+    padding:8px 16px;
+
+    border-radius:12px;
+
+    margin-bottom:18px;
 }
 
 .section-title{
-    font-family:'Playfair Display',serif;
-    font-size:1.4rem;
-    margin-bottom:14px;
-    color:var(--primary-dark);
+
+    font-family:'Oswald',sans-serif;
+
+    font-size:1.9rem;
+
+    line-height:1.1;
+
+    color:var(--petrol-dark);
+
+    margin-bottom:16px;
 }
 
-.daily-title{
-    font-size:1.2rem;
-    font-weight:600;
-    margin-bottom:14px;
+/* CARD PRINCIPALE CONSIGLIO */
+
+.coach-card{
+
+    text-align:center;
+}
+
+.mini-ali{
+
+    width:70px;
+
+    display:block;
+
+    margin:0 auto 18px;
+
+    opacity:.9;
 }
 
 .quote{
-    font-size:1.15rem;
-    line-height:1.8;
-    color:var(--text);
-    font-style:italic;
+
+    font-family:'Oswald',sans-serif;
+
+    font-size:3rem;
+
+    line-height:1.05;
+
+    color:var(--petrol-dark);
+
+    margin-bottom:20px;
 }
 
-.text{
-    line-height:1.8;
-    color:var(--text);
+.quote strong{
+
+    color:var(--petrol);
 }
 
-.question{
-    font-size:1.1rem;
-    font-weight:500;
-    line-height:1.6;
-}
+.brush-line{
 
-textarea{
-    width:100%;
-    min-height:180px;
-    resize:vertical;
-    border:none;
-    background:#faf8f7;
-    border-radius:18px;
-    padding:18px;
-    font-family:inherit;
-    font-size:1rem;
-    outline:none;
-    color:var(--text);
+    width:120px;
+
+    height:5px;
+
+    background:var(--petrol);
+
+    border-radius:999px;
+
+    margin:20px auto;
 }
 
 .actions{
+
     display:flex;
+
     flex-wrap:wrap;
+
+    justify-content:center;
+
     gap:12px;
-    margin-top:16px;
+
+    margin-top:20px;
 }
 
 button,
-.share-btn,
 .instagram-btn{
+
     border:none;
+
     text-decoration:none;
+
     cursor:pointer;
-    padding:14px 18px;
+
     border-radius:14px;
+
     font-size:.95rem;
+
     font-weight:600;
+
     transition:.25s;
+
+    padding:12px 18px;
+}
+
+.share-btn{
+
+    background:var(--aqua);
+
+    color:var(--petrol-dark);
+}
+
+.share-btn:hover{
+
+    transform:translateY(-2px);
+}
+
+.instagram-btn{
+
+    background:var(--petrol);
+
+    color:white;
+}
+
+.instagram-btn:hover{
+
+    background:var(--petrol-dark);
+}
+
+.text{
+
+    line-height:1.9;
+
+    color:var(--text);
+}
+
+.question-card{
+
+    background:
+    linear-gradient(
+        135deg,
+        var(--aqua),
+        #bfe7e2
+    );
+}
+
+.question{
+
+    font-size:1.15rem;
+
+    line-height:1.8;
+
+    font-weight:500;
+
+    color:var(--petrol-dark);
+}
+
+/* FORM */
+
+textarea{
+
+    width:100%;
+
+    min-height:200px;
+
+    border:none;
+
+    resize:vertical;
+
+    border-radius:18px;
+
+    background:white;
+
+    padding:18px;
+
+    font-family:inherit;
+
+    font-size:1rem;
+
+    color:var(--text);
+
+    outline:none;
+}
+
+textarea:focus{
+
+    box-shadow:
+    0 0 0 2px rgba(13,91,97,.18);
 }
 
 .primary-btn{
-    background:var(--primary);
+
+    background:var(--petrol);
+
     color:white;
 }
 
 .primary-btn:hover{
-    background:var(--primary-dark);
-}
 
-.share-btn{
-    background:#efe2da;
-    color:var(--primary-dark);
-    padding:10px 14px;
-    font-size:.85rem;
-}
-
-.instagram-btn{
-    background:#f7edf0;
-    color:#b04c7a;
-}
-
-.entry{
-    background:#faf7f5;
-    border-radius:18px;
-    padding:16px;
-    margin-bottom:12px;
-}
-
-.entry-date{
-    font-size:.85rem;
-    color:var(--text-light);
-    margin-bottom:8px;
-}
-
-.entry-text{
-    white-space:pre-wrap;
-    line-height:1.7;
-}
-
-.delete-btn{
-    margin-top:12px;
-    background:#fff;
-    border:1px solid #e0d5cf;
-    color:#8a5d52;
-    padding:8px 12px;
-    border-radius:10px;
-    cursor:pointer;
-}
-
-.empty{
-    color:var(--text-light);
-    text-align:center;
-    padding:10px;
-}
-
-footer{
-    text-align:center;
-    margin-top:30px;
-    padding-bottom:20px;
-    color:var(--text-light);
-    font-size:.9rem;
+    background:var(--petrol-dark);
 }
 
 @media (min-width:768px){
 
-    body{
-        padding:30px;
+    .container{
+        padding:35px;
     }
 
     h1{
+        font-size:5rem;
+    }
+
+    .quote{
         font-size:4rem;
     }
 
     .card{
-        padding:30px;
-    }
-
-    .actions{
-        justify-content:flex-start;
+        padding:34px;
     }
 }
+
 </style>
 </head>
+
 <body>
+
+<div class="decor-top"></div>
+<div class="decor-bottom"></div>
+<div class="dots-top"></div>
+<div class="dots-bottom"></div>
 
 <div class="container">
 
-    <div class="hero">
-        <img src="ali.png" alt="ALI" class="logo">
-        <h1>ALI</h1>
-        <div class="subtitle">La forza di volare</div>
-    </div>
+<div class="hero">
 
+<img src="ali.png" alt="ALI" class="logo">
 
+<h1>ALI</h1>
 
-    <div class="card">
-        <div class="section-title">Consiglio della Coach</div>
-        <div id="frase" class="quote">
-            Caricamento...
-        </div>
+<div class="subtitle">
+La forza di volare
+</div>
 
-        <div class="actions">
-            <button class="share-btn" onclick="condividiConsiglio()">
-                Condividi il consiglio
-            </button>
-
-            <a
-                class="instagram-btn"
-                href="https://www.instagram.com/elisabettagatti_/"
-                target="_blank"
-                rel="noopener"
-            >
-                Segui Elisabetta
-            </a>
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="section-title">Approfondimento</div>
-        <div id="testo" class="text">
-            Caricamento...
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="section-title">Domanda del giorno</div>
-        <div id="domanda" class="question">
-            Caricamento...
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="section-title">Il mio spazio</div>
-
-        <textarea
-            id="riflessione"
-            placeholder="Scrivi liberamente ciò che senti, pensi o desideri ricordare..."
-        ></textarea>
-
-        <div class="actions">
-            <button class="primary-btn" onclick="salvaDiario()">
-                Salva nel diario
-            </button>
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="section-title">Le mie riflessioni</div>
-        <div id="storico"></div>
-    </div>
-
-    <footer>
-        ALI • Un progetto di Elisabetta Gatti Coach
-    </footer>
+<div class="hero-copy">
+Ritrova te stessa,<br>
+un passo alla volta.
+</div>
 
 </div>
 
-<script src="frasi.js"></script>
-    
-<script>
-/*
-Compatibile con frasi.js
+<div class="card coach-card">
 
-Esempio:
+<img src="ali.png" class="mini-ali" alt="Ali">
 
-const frasi = [
-{
-    titolo:"...",
-    frase:"...",
-    testo:"...",
-    domanda:"..."
-}
-];
-*/
+<div class="section-label">
+Consiglio della Coach
+</div>
 
-let fraseDelGiorno = {
-    titolo:"Benvenuta",
-    frase:"Ogni giorno è una nuova possibilità.",
-    testo:"Inserisci il file frasi.js per visualizzare i contenuti dinamici.",
-    domanda:"Qual è il primo piccolo passo che puoi fare oggi?"
-};
+<div id="frase" class="quote">
+Caricamento...
+</div>
 
-function ottieniIndiceDelGiorno(max){
-    const oggi = new Date();
-    const inizio = new Date(oggi.getFullYear(),0,0);
-    const diff = oggi - inizio;
-    const giorno = Math.floor(diff / 86400000);
-    return giorno % max;
-}
+<div class="brush-line"></div>
 
-function caricaFraseDelGiorno(){
+<div class="actions">
 
-    if(
-        typeof frasi !== "undefined" &&
-        Array.isArray(frasi) &&
-        frasi.length > 0
-    ){
-        fraseDelGiorno = frasi[
-            ottieniIndiceDelGiorno(frasi.length)
-        ];
-    }
+<button
+class="share-btn"
+onclick="condividiConsiglio()">
+Condividi il consiglio
+</button>
 
+<a
+class="instagram-btn"
+href="https://www.instagram.com/elisabettagatti_/"
+target="_blank"
+rel="noopener">
+Segui Elisabetta
+</a>
 
+</div>
 
-    document.getElementById("frase").textContent =
-        fraseDelGiorno.frase || "";
-
-    document.getElementById("testo").textContent =
-        fraseDelGiorno.testo || "";
-
-    document.getElementById("domanda").textContent =
-        fraseDelGiorno.domanda || "";
-}
-
-function getDataOggi(){
-    const oggi = new Date();
-
-    return oggi.getFullYear() + "-" +
-        String(oggi.getMonth()+1).padStart(2,"0") + "-" +
-        String(oggi.getDate()).padStart(2,"0");
-}
-
-function salvaDiario(){
-
-    const testo = document
-        .getElementById("riflessione")
-        .value
-        .trim();
-
-    if(!testo){
-        alert("Scrivi una riflessione prima di salvare.");
-        return;
-    }
-
-    const archivio =
-        JSON.parse(
-            localStorage.getItem("ali_diario") || "[]"
-        );
-
-    archivio.unshift({
-        id: Date.now(),
-        data: getDataOggi(),
-        ora: new Date().toLocaleTimeString("it-IT"),
-        testo
-    });
-
-    localStorage.setItem(
-        "ali_diario",
-        JSON.stringify(archivio)
-    );
-
-    document.getElementById("riflessione").value = "";
-
-    renderDiario();
-}
-
-function eliminaVoce(id){
-
-    const archivio =
-        JSON.parse(
-            localStorage.getItem("ali_diario") || "[]"
-        );
-
-    const nuovo =
-        archivio.filter(v => v.id !== id);
-
-    localStorage.setItem(
-        "ali_diario",
-        JSON.stringify(nuovo)
-    );
-
-    renderDiario();
-}
-
-function renderDiario(){
-
-    const contenitore =
-        document.getElementById("storico");
-
-    const archivio =
-        JSON.parse(
-            localStorage.getItem("ali_diario") || "[]"
-        );
-
-    if(archivio.length === 0){
-        contenitore.innerHTML =
-            '<div class="empty">Nessuna riflessione salvata.</div>';
-        return;
-    }
-
-    contenitore.innerHTML = archivio.map(item => `
-        <div class="entry">
-            <div class="entry-date">
-                ${item.data} • ${item.ora}
-            </div>
-
-            <div class="entry-text">
-                ${escapeHtml(item.testo)}
-            </div>
-
-            <button
-                class="delete-btn"
-                onclick="eliminaVoce(${item.id})"
-            >
-                Elimina
-            </button>
-        </div>
-    `).join("");
-}
-
-function escapeHtml(text){
-    const div = document.createElement("div");
-    div.textContent = text;
-    return div.innerHTML;
-}
-
-async function condividiConsiglio(){
-
-    const testo =
-`${fraseDelGiorno.frase}
-
-${fraseDelGiorno.domanda}
-
-ALI - La forza di volare`;
-
-    if(
-        navigator.share
-    ){
-        try{
-            await navigator.share({
-                title:"ALI",
-                text:testo
-            });
-        }catch(e){}
-    }else{
-
-        try{
-            await navigator.clipboard.writeText(testo);
-            alert("Consiglio copiato negli appunti.");
-        }catch(e){
-            alert(testo);
-        }
-    }
-}
-
-caricaFraseDelGiorno();
-renderDiario();
-</script>
-
-</body>
-</html>
+</div>
