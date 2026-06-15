@@ -1,492 +1,354 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>ALI - La forza di volare</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="manifest" href="manifest.json">
+
+<link rel="apple-touch-icon" href="icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="ALI">
+<meta name="theme-color" content="#1F5A5A">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-:root{
-    --bg:#f8f4f1;
-    --card:#ffffff;
-    --primary:#b98d7a;
-    --primary-dark:#9c7361;
-    --secondary:#e8d8cf;
-    --text:#2f2a28;
-    --text-light:#6f6865;
-    --shadow:0 12px 35px rgba(0,0,0,.08);
-    --radius:24px;
-}
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
 body{
-    font-family:'Inter',sans-serif;
-    background:linear-gradient(180deg,#faf7f5 0%,#f3ebe7 100%);
-    color:var(--text);
-    min-height:100vh;
-    padding:20px;
+background:
+radial-gradient(circle at top right, rgba(139,207,208,.20), transparent 30%),
+radial-gradient(circle at bottom left, rgba(139,207,208,.15), transparent 35%),
+#F5EFE6;
+
+font-family:'Montserrat',sans-serif;
+color:#1F5A5A;
+min-height:100vh;
 }
 
 .container{
-    width:100%;
-    max-width:850px;
-    margin:0 auto;
-}
-
-.hero{
-    text-align:center;
-    margin-bottom:24px;
-}
-
-.logo{
-    width:90px;
-    height:90px;
-    object-fit:contain;
-    margin:10px auto 15px;
-    display:block;
-}
-
-h1{
-    font-family:'Playfair Display',serif;
-    font-size:3rem;
-    font-weight:700;
-    color:var(--primary-dark);
-}
-
-.subtitle{
-    margin-top:8px;
-    color:var(--text-light);
-    font-size:1rem;
-    letter-spacing:.5px;
+max-width:650px;
+margin:auto;
+padding:25px;
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
 }
 
 .card{
-    background:var(--card);
-    border-radius:var(--radius);
-    padding:24px;
-    margin-bottom:18px;
-    box-shadow:var(--shadow);
+background:#FBF8F3;
+border-radius:32px;
+padding:32px;
+box-shadow:0 18px 45px rgba(0,0,0,.08);
+position:relative;
+overflow:hidden;
 }
 
-.section-title{
-    font-family:'Playfair Display',serif;
-    font-size:1.4rem;
-    margin-bottom:14px;
-    color:var(--primary-dark);
+.card:before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:10px;
+background:#8BCFD0;
 }
 
-.daily-title{
-    font-size:1.2rem;
-    font-weight:600;
-    margin-bottom:14px;
+.logo{
+text-align:center;
+margin-bottom:10px;
+}
+
+.logo img{
+width:120px;
+max-width:100%;
+}
+
+.brand{
+font-family:'Cormorant Garamond',serif;
+font-size:58px;
+font-weight:700;
+text-align:center;
+letter-spacing:4px;
+color:#1F5A5A;
+}
+
+.subtitle{
+font-size:13px;
+letter-spacing:4px;
+text-transform:uppercase;
+text-align:center;
+margin-top:-5px;
+margin-bottom:18px;
+color:#5D7D7D;
+font-weight:600;
+}
+
+.divider{
+width:120px;
+height:3px;
+background:#8BCFD0;
+margin:0 auto 25px auto;
+border-radius:20px;
+}
+
+.tag{
+text-align:center;
+font-weight:700;
+font-size:14px;
+letter-spacing:2px;
+text-transform:uppercase;
+color:#1F5A5A;
+margin-bottom:30px;
 }
 
 .quote{
-    font-size:1.15rem;
-    line-height:1.8;
-    color:var(--text);
-    font-style:italic;
+font-family:'Cormorant Garamond',serif;
+font-size:48px;
+font-weight:700;
+line-height:1.1;
+text-align:center;
+color:#163D3D;
+margin-bottom:15px;
 }
 
-.text{
-    line-height:1.8;
-    color:var(--text);
+.btn{
+width:100%;
+border:none;
+background:#1F5A5A;
+color:white;
+padding:16px;
+border-radius:14px;
+font-size:15px;
+font-weight:600;
+cursor:pointer;
+margin-top:15px;
+transition:.2s;
 }
 
-.question{
-    font-size:1.1rem;
-    font-weight:500;
-    line-height:1.6;
-}
-
-textarea{
-    width:100%;
-    min-height:180px;
-    resize:vertical;
-    border:none;
-    background:#faf8f7;
-    border-radius:18px;
-    padding:18px;
-    font-family:inherit;
-    font-size:1rem;
-    outline:none;
-    color:var(--text);
-}
-
-.actions{
-    display:flex;
-    flex-wrap:wrap;
-    gap:12px;
-    margin-top:16px;
-}
-
-button,
-.share-btn,
-.instagram-btn{
-    border:none;
-    text-decoration:none;
-    cursor:pointer;
-    padding:14px 18px;
-    border-radius:14px;
-    font-size:.95rem;
-    font-weight:600;
-    transition:.25s;
-}
-
-.primary-btn{
-    background:var(--primary);
-    color:white;
-}
-
-.primary-btn:hover{
-    background:var(--primary-dark);
+.btn:hover{
+opacity:.9;
 }
 
 .share-btn{
-    background:#efe2da;
-    color:var(--primary-dark);
-    padding:10px 14px;
-    font-size:.85rem;
+background:#8BCFD0;
+color:#163D3D;
 }
 
-.instagram-btn{
-    background:#f7edf0;
-    color:#b04c7a;
+.footer-brand{
+margin-top:30px;
+padding-top:20px;
+border-top:1px solid rgba(31,90,90,.15);
+display:flex;
+justify-content:space-between;
+align-items:center;
 }
 
-.entry{
-    background:#faf7f5;
-    border-radius:18px;
-    padding:16px;
-    margin-bottom:12px;
+.footer-text{
+font-size:13px;
+line-height:1.6;
+color:#5D7D7D;
 }
 
-.entry-date{
-    font-size:.85rem;
-    color:var(--text-light);
-    margin-bottom:8px;
+.instagram-link{
+text-decoration:none;
+color:#1F5A5A;
+font-weight:700;
+font-size:14px;
 }
 
-.entry-text{
-    white-space:pre-wrap;
-    line-height:1.7;
+.instagram-link:hover{
+opacity:.7;
 }
 
-.delete-btn{
-    margin-top:12px;
-    background:#fff;
-    border:1px solid #e0d5cf;
-    color:#8a5d52;
-    padding:8px 12px;
-    border-radius:10px;
-    cursor:pointer;
+#detail{
+display:none;
 }
 
-.empty{
-    color:var(--text-light);
-    text-align:center;
-    padding:10px;
+.detail-title{
+font-family:'Cormorant Garamond',serif;
+font-size:42px;
+font-weight:700;
+line-height:1.1;
+text-align:center;
+margin-bottom:25px;
+color:#163D3D;
 }
 
-footer{
-    text-align:center;
-    margin-top:30px;
-    padding-bottom:20px;
-    color:var(--text-light);
-    font-size:.9rem;
+.detail-text{
+font-size:18px;
+line-height:1.9;
+color:#284848;
 }
 
-@media (min-width:768px){
+@media(max-width:600px){
 
-    body{
-        padding:30px;
-    }
-
-    h1{
-        font-size:4rem;
-    }
-
-    .card{
-        padding:30px;
-    }
-
-    .actions{
-        justify-content:flex-start;
-    }
+.brand{
+font-size:46px;
 }
+
+.quote{
+font-size:38px;
+}
+
+.detail-title{
+font-size:34px;
+}
+
+.logo img{
+width:100px;
+}
+
+}
+
 </style>
+
 </head>
+
 <body>
 
-<div class="container">
+<div class="container" id="home">
 
-    <div class="hero">
-        <img src="ali.png" alt="ALI" class="logo">
-        <h1>ALI</h1>
-        <div class="subtitle">La forza di volare</div>
-    </div>
+<div class="card">
 
+<div class="logo">
+<img src="ali.png" alt="ALI">
+</div>
 
+<div class="brand">ALI</div>
 
-    <div class="card">
-        <div class="section-title">Consiglio della Coach</div>
-        <div id="frase" class="quote">
-            Caricamento...
-        </div>
+<div class="subtitle">
+La forza di volare
+</div>
 
-        <div class="actions">
-            <button class="share-btn" onclick="condividiConsiglio()">
-                Condividi il consiglio
-            </button>
+<div class="divider"></div>
 
-            <a
-                class="instagram-btn"
-                href="https://www.instagram.com/elisabettagatti_/"
-                target="_blank"
-                rel="noopener"
-            >
-                Segui Elisabetta
-            </a>
-        </div>
-    </div>
+<div class="tag" id="titolo"></div>
 
-    <div class="card">
-        <div class="section-title">Approfondimento</div>
-        <div id="testo" class="text">
-            Caricamento...
-        </div>
-    </div>
+<div class="quote" id="fraseDelGiorno"></div>
 
-    <div class="card">
-        <div class="section-title">Domanda del giorno</div>
-        <div id="domanda" class="question">
-            Caricamento...
-        </div>
-    </div>
+<button class="btn" onclick="openDetail()">
+Approfondisci
+</button>
 
-    <div class="card">
-        <div class="section-title">Il mio spazio</div>
+<button class="btn share-btn" onclick="shareReflection()">
+Condividi riflessione
+</button>
 
-        <textarea
-            id="riflessione"
-            placeholder="Scrivi liberamente ciò che senti, pensi o desideri ricordare..."
-        ></textarea>
+<div class="footer-brand">
 
-        <div class="actions">
-            <button class="primary-btn" onclick="salvaDiario()">
-                Salva nel diario
-            </button>
-        </div>
-    </div>
+<div class="footer-text">
+Un progetto di<br>
+<strong>Elisabetta Gatti Coach</strong>
+</div>
 
-    <div class="card">
-        <div class="section-title">Le mie riflessioni</div>
-        <div id="storico"></div>
-    </div>
+<a
+class="instagram-link"
+href="https://www.instagram.com/elisabettagatti_/"
+target="_blank">
 
-    <footer>
-        ALI • Un progetto di Elisabetta Gatti Coach
-    </footer>
+Instagram
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="container" id="detail">
+
+<div class="card">
+
+<div class="logo">
+<img src="ali.png" alt="ALI">
+</div>
+
+<div class="brand">ALI</div>
+
+<div class="subtitle">
+La forza di volare
+</div>
+
+<div class="detail-title" id="detailTitle"></div>
+
+<div class="detail-text" id="detailText"></div>
+
+<button class="btn" onclick="closeDetail()">
+Torna alla riflessione
+</button>
+
+</div>
 
 </div>
 
 <script src="frasi.js"></script>
-    
+
 <script>
-/*
-Compatibile con frasi.js
 
-Esempio:
+document.getElementById("titolo").innerText = contenuto.titolo;
+document.getElementById("fraseDelGiorno").innerText = contenuto.frase;
 
-const frasi = [
-{
-    titolo:"...",
-    frase:"...",
-    testo:"...",
-    domanda:"..."
-}
-];
-*/
+document.getElementById("detailTitle").innerText = contenuto.frase;
+document.getElementById("detailText").innerText = contenuto.testo;
 
-let fraseDelGiorno = {
-    titolo:"Benvenuta",
-    frase:"Ogni giorno è una nuova possibilità.",
-    testo:"Inserisci il file frasi.js per visualizzare i contenuti dinamici.",
-    domanda:"Qual è il primo piccolo passo che puoi fare oggi?"
-};
+function openDetail(){
 
-function ottieniIndiceDelGiorno(max){
-    const oggi = new Date();
-    const inizio = new Date(oggi.getFullYear(),0,0);
-    const diff = oggi - inizio;
-    const giorno = Math.floor(diff / 86400000);
-    return giorno % max;
+document.getElementById("home").style.display="none";
+document.getElementById("detail").style.display="flex";
+
+window.scrollTo(0,0);
+
 }
 
-function caricaFraseDelGiorno(){
+function closeDetail(){
 
-    if(
-        typeof frasi !== "undefined" &&
-        Array.isArray(frasi) &&
-        frasi.length > 0
-    ){
-        fraseDelGiorno = frasi[
-            ottieniIndiceDelGiorno(frasi.length)
-        ];
-    }
+document.getElementById("detail").style.display="none";
+document.getElementById("home").style.display="flex";
 
+window.scrollTo(0,0);
 
-
-    document.getElementById("frase").textContent =
-        fraseDelGiorno.frase || "";
-
-    document.getElementById("testo").textContent =
-        fraseDelGiorno.testo || "";
-
-    document.getElementById("domanda").textContent =
-        fraseDelGiorno.domanda || "";
 }
 
-function getDataOggi(){
-    const oggi = new Date();
+function shareReflection(){
 
-    return oggi.getFullYear() + "-" +
-        String(oggi.getMonth()+1).padStart(2,"0") + "-" +
-        String(oggi.getDate()).padStart(2,"0");
+const testo =
+contenuto.frase +
+"\n\n— ALI | La forza di volare" +
+"\nUn progetto di Elisabetta Gatti Coach" +
+"\nhttps://fabiocofa.github.io/ALI/";
+
+if(navigator.share){
+
+navigator.share({
+title:"ALI",
+text:testo
+});
+
+}else{
+
+navigator.clipboard.writeText(testo);
+alert("Riflessione copiata negli appunti");
+
 }
 
-function salvaDiario(){
-
-    const testo = document
-        .getElementById("riflessione")
-        .value
-        .trim();
-
-    if(!testo){
-        alert("Scrivi una riflessione prima di salvare.");
-        return;
-    }
-
-    const archivio =
-        JSON.parse(
-            localStorage.getItem("ali_diario") || "[]"
-        );
-
-    archivio.unshift({
-        id: Date.now(),
-        data: getDataOggi(),
-        ora: new Date().toLocaleTimeString("it-IT"),
-        testo
-    });
-
-    localStorage.setItem(
-        "ali_diario",
-        JSON.stringify(archivio)
-    );
-
-    document.getElementById("riflessione").value = "";
-
-    renderDiario();
 }
 
-function eliminaVoce(id){
-
-    const archivio =
-        JSON.parse(
-            localStorage.getItem("ali_diario") || "[]"
-        );
-
-    const nuovo =
-        archivio.filter(v => v.id !== id);
-
-    localStorage.setItem(
-        "ali_diario",
-        JSON.stringify(nuovo)
-    );
-
-    renderDiario();
-}
-
-function renderDiario(){
-
-    const contenitore =
-        document.getElementById("storico");
-
-    const archivio =
-        JSON.parse(
-            localStorage.getItem("ali_diario") || "[]"
-        );
-
-    if(archivio.length === 0){
-        contenitore.innerHTML =
-            '<div class="empty">Nessuna riflessione salvata.</div>';
-        return;
-    }
-
-    contenitore.innerHTML = archivio.map(item => `
-        <div class="entry">
-            <div class="entry-date">
-                ${item.data} • ${item.ora}
-            </div>
-
-            <div class="entry-text">
-                ${escapeHtml(item.testo)}
-            </div>
-
-            <button
-                class="delete-btn"
-                onclick="eliminaVoce(${item.id})"
-            >
-                Elimina
-            </button>
-        </div>
-    `).join("");
-}
-
-function escapeHtml(text){
-    const div = document.createElement("div");
-    div.textContent = text;
-    return div.innerHTML;
-}
-
-async function condividiConsiglio(){
-
-    const testo =
-`${fraseDelGiorno.frase}
-
-${fraseDelGiorno.domanda}
-
-ALI - La forza di volare`;
-
-    if(
-        navigator.share
-    ){
-        try{
-            await navigator.share({
-                title:"ALI",
-                text:testo
-            });
-        }catch(e){}
-    }else{
-
-        try{
-            await navigator.clipboard.writeText(testo);
-            alert("Consiglio copiato negli appunti.");
-        }catch(e){
-            alert(testo);
-        }
-    }
-}
-
-caricaFraseDelGiorno();
-renderDiario();
 </script>
 
 </body>
