@@ -70,9 +70,4 @@ testo: "Molto spesso non ci manca la risposta. Ci manca il coraggio di accettarl
 domanda: "Quale verità stai evitando di guardare in questo momento?"
 }
 
-const giorno = Math.floor(Date.now() / 86400000);
-
-const contenuto = frasi[giorno % frasi.length];
-
 ];
-
