@@ -1,157 +1,77 @@
 const frasi = [
+
 {
-titolo: "Opinione impopolare",
+titolo: "Il consiglio della Coach",
 frase: "Non tutto ciò che sopporti è amore.",
-testo: "Restare non è sempre una prova d'amore. A volte è solo paura di perdere qualcosa che non esiste più."
-},
-{
-titolo: "Opinione impopolare",
-frase: "Non puoi costruire una coppia da sola.",
-testo: "Una relazione richiede due persone che scelgono di esserci. Se fai tutto tu, non stai costruendo una coppia."
-},
-{
-titolo: "Riflessione del giorno",
-frase: "Chi ti ama non ti lascia sempre nel dubbio.",
-testo: "L'incertezza continua logora. Una relazione sana non elimina ogni dubbio, ma offre presenza e chiarezza."
-},
-{
-titolo: "Riflessione del giorno",
-frase: "L'amore non dovrebbe costringerti a rinunciare a te stessa.",
-testo: "Ogni volta che ti annulli per essere scelta, perdi una parte di te."
-},
-{
-titolo: "Opinione impopolare",
-frase: "La tua sensibilità non è il problema.",
-testo: "Essere sensibili non significa essere sbagliate. Significa percepire ciò che altre persone ignorano."
-},
-{
-titolo: "Riflessione del giorno",
-frase: "Non sei difficile da amare.",
-testo: "Hai bisogni, desideri e limiti. Questo non ti rende difficile da amare, ti rende umana."
-},
-{
-titolo: "Opinione impopolare",
-frase: "Non tutte le relazioni devono essere salvate.",
-testo: "A volte la scelta più sana non è riparare, ma lasciare andare."
-},
-{
-titolo: "Riflessione del giorno",
-frase: "La pace vale più della conferma.",
-testo: "Non cercare continuamente prove del tuo valore. Cerca luoghi in cui non devi dimostrarlo."
-},
-{
-titolo: "Opinione impopolare",
-frase: "L'amore non cancella la mancanza di rispetto.",
-testo: "Puoi amare profondamente qualcuno e riconoscere che il suo comportamento non è accettabile."
-},
-{
-titolo: "Riflessione del giorno",
-frase: "Non devi convincere nessuno a sceglierti.",
-testo: "Chi vede il tuo valore non ha bisogno di essere persuaso."
+testo: "A volte restiamo in situazioni che ci fanno soffrire perché abbiamo paura di ciò che potrebbe accadere lasciandole andare. Ma sopportare non è amare. L'amore dovrebbe nutrire, non consumare.",
+domanda: "In quale situazione della tua vita stai continuando a tollerare qualcosa che ti fa stare male?"
 },
 
 {
-titolo: "Riflessione del giorno",
-frase: "Ogni confine che metti è una forma di amore verso te stessa.",
-testo: "Dire no non allontana le persone giuste. Le aiuta a capire chi sei."
-},
-{
-titolo: "Opinione impopolare",
-frase: "La solitudine non è sempre il nemico.",
-testo: "A volte la solitudine è il luogo in cui ritrovi la tua voce."
-},
-{
-titolo: "Riflessione del giorno",
-frase: "Essere comprese è un bisogno, non un capriccio.",
-testo: "Sentirsi ascoltate e viste è una necessità emotiva fondamentale."
-},
-{
-titolo: "Opinione impopolare",
-frase: "Non tutto dipende dalla comunicazione.",
-testo: "Puoi spiegarti perfettamente. Ma se l'altro non vuole ascoltare, il problema non è la comunicazione."
-},
-{
-titolo: "Riflessione del giorno",
-frase: "La tua felicità non deve dipendere da una risposta.",
-testo: "Il tuo valore non aumenta o diminuisce in base a un messaggio ricevuto."
-},
-{
-titolo: "Opinione impopolare",
-frase: "L'abitudine può sembrare amore.",
-testo: "Non restare solo perché è ciò che conosci."
-},
-{
-titolo: "Riflessione del giorno",
-frase: "Meriti reciprocità.",
-testo: "L'amore non è una gara a chi si impegna di più."
-},
-{
-titolo: "Opinione impopolare",
-frase: "Aspettare non sempre è una prova di amore.",
-testo: "A volte è solo una forma elegante di rinunciare a te stessa."
-},
-{
-titolo: "Riflessione del giorno",
-frase: "Le tue emozioni meritano spazio.",
-testo: "Ignorare ciò che senti non lo farà sparire."
-},
-{
-titolo: "Opinione impopolare",
-frase: "Non sei responsabile della crescita degli altri.",
-testo: "Puoi sostenere una persona, ma non puoi fare il suo percorso al posto suo."
+titolo: "Il consiglio della Coach",
+frase: "Non devi convincere nessuno del tuo valore.",
+testo: "Quando una persona ha bisogno di essere continuamente convinta, il problema spesso non sei tu. Chi sa vederti non ha bisogno di continue dimostrazioni.",
+domanda: "A chi stai cercando di dimostrare qualcosa che dovrebbe essere evidente?"
 },
 
 {
-titolo: "Riflessione del giorno",
-frase: "Lasciare andare richiede forza.",
-testo: "A volte il coraggio non è restare. È andarsene."
+titolo: "Il consiglio della Coach",
+frase: "Essere scelta non è più importante che scegliere te stessa.",
+testo: "Molte donne passano anni a cercare conferme dagli altri dimenticando di chiedersi cosa desiderano davvero. La tua approvazione conta quanto quella degli altri.",
+domanda: "In quale area della tua vita stai mettendo i bisogni degli altri prima dei tuoi?"
 },
+
 {
-titolo: "Opinione impopolare",
-frase: "La chiarezza è un atto d'amore.",
-testo: "Chi evita sempre le conversazioni difficili spesso crea ferite più profonde."
+titolo: "Il consiglio della Coach",
+frase: "La chiarezza è una forma di rispetto.",
+testo: "Le persone che tengono davvero a una relazione cercano chiarezza. L'ambiguità costante crea insicurezza e confusione.",
+domanda: "C'è una situazione nella quale avresti bisogno di fare una domanda diretta?"
 },
+
 {
-titolo: "Riflessione del giorno",
-frase: "Non devi essere perfetta per essere amata.",
-testo: "L'amore sano non richiede performance."
+titolo: "Il consiglio della Coach",
+frase: "Non confondere la speranza con la realtà.",
+testo: "La speranza è importante, ma non deve impedirti di vedere ciò che accade davvero. Guarda i comportamenti prima delle promesse.",
+domanda: "Cosa stai aspettando che cambi da troppo tempo?"
 },
+
 {
-titolo: "Opinione impopolare",
-frase: "La paura non è una bussola affidabile.",
-testo: "Le decisioni migliori raramente nascono dal panico."
+titolo: "Il consiglio della Coach",
+frase: "Ogni confine che metti è un atto di amore verso te stessa.",
+testo: "Dire no non significa essere egoiste. Significa proteggere il tuo equilibrio e il tuo benessere.",
+domanda: "Quale limite dovresti iniziare a far rispettare?"
 },
+
 {
-titolo: "Riflessione del giorno",
-frase: "La tua voce conta.",
-testo: "Non ridurre ciò che senti per rendere gli altri più comodi."
+titolo: "Il consiglio della Coach",
+frase: "La solitudine non è sempre il problema.",
+testo: "A volte la vera sofferenza non è essere sole, ma sentirsi sole accanto a qualcuno.",
+domanda: "Quando ti sei sentita veramente ascoltata l'ultima volta?"
 },
+
 {
-titolo: "Opinione impopolare",
-frase: "L'attenzione non è la stessa cosa dell'amore.",
-testo: "Essere cercate non significa essere realmente amate."
+titolo: "Il consiglio della Coach",
+frase: "Non sei responsabile della felicità degli altri.",
+testo: "Puoi sostenere, aiutare e amare, ma non puoi vivere al posto di qualcuno. Ognuno è responsabile del proprio percorso.",
+domanda: "Di quale peso emotivo altrui stai cercando di occuparti?"
 },
+
 {
-titolo: "Riflessione del giorno",
-frase: "Scegli anche te stessa.",
-testo: "Non fare della relazione l'unico luogo in cui esisti."
+titolo: "Il consiglio della Coach",
+frase: "Le tue emozioni meritano ascolto.",
+testo: "Le emozioni non sono nemiche da combattere. Sono segnali che raccontano qualcosa di importante su ciò che stai vivendo.",
+domanda: "Quale emozione stai cercando di ignorare ultimamente?"
 },
+
 {
-titolo: "Opinione impopolare",
-frase: "Non tutte le promesse meritano un'altra possibilità.",
-testo: "Conta ciò che una persona fa, non solo ciò che dice."
-},
-{
-titolo: "Riflessione del giorno",
-frase: "La fiducia si costruisce nel tempo.",
-testo: "Le parole possono iniziare un percorso. I comportamenti lo confermano."
-},
-{
-titolo: "Opinione impopolare",
-frase: "A volte la risposta è già dentro di te.",
-testo: "Spesso non ti manca la risposta. Ti manca il coraggio di ascoltarla."
+titolo: "Il consiglio della Coach",
+frase: "A volte la risposta la conosci già.",
+testo: "Molto spesso non ci manca la risposta. Ci manca il coraggio di accettarla e agire di conseguenza.",
+domanda: "Quale verità stai evitando di guardare in questo momento?"
 }
+
 ];
 
 const giorno = Math.floor(Date.now() / 86400000);
+
 const contenuto = frasi[giorno % frasi.length];
