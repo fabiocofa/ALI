@@ -5,19 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ALI - La forza di volare</title>
 
-<link rel="manifest" href="manifest.json">
-<link rel="apple-touch-icon" href="icon.png">
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
 :root{
-    --petrol:#0E6A72;
-    --water:#7FCFD1;
-    --beige:#F4E9DC;
-    --ivory:#FBF6F0;
-    --text:#214046;
-    --shadow:0 12px 40px rgba(14,106,114,.12);
+    --bg:#f8f4f1;
+    --card:#ffffff;
+    --primary:#b98d7a;
+    --primary-dark:#9c7361;
+    --secondary:#e8d8cf;
+    --text:#2f2a28;
+    --text-light:#6f6865;
+    --shadow:0 12px 35px rgba(0,0,0,.08);
     --radius:24px;
 }
 
@@ -27,251 +26,199 @@
     box-sizing:border-box;
 }
 
-html{
-    scroll-behavior:smooth;
-}
-
 body{
     font-family:'Inter',sans-serif;
-    background:var(--beige);
+    background:linear-gradient(180deg,#faf7f5 0%,#f3ebe7 100%);
     color:var(--text);
     min-height:100vh;
-    overflow-x:hidden;
-    position:relative;
-}
-
-body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    background:url('ali.png') center center no-repeat;
-    background-size:420px;
-    opacity:.035;
-    pointer-events:none;
-    z-index:0;
+    padding:20px;
 }
 
 .container{
-    position:relative;
-    z-index:1;
     width:100%;
-    max-width:920px;
-    margin:auto;
-    padding:20px;
+    max-width:850px;
+    margin:0 auto;
 }
 
 .hero{
     text-align:center;
-    padding:30px 0 20px;
+    margin-bottom:24px;
 }
 
 .logo{
-    width:110px;
-    height:110px;
+    width:90px;
+    height:90px;
     object-fit:contain;
-    margin:auto;
+    margin:10px auto 15px;
     display:block;
-    margin-bottom:14px;
 }
 
 h1{
     font-family:'Playfair Display',serif;
-    font-size:3.4rem;
-    color:var(--petrol);
-    line-height:1;
-    margin-bottom:10px;
+    font-size:3rem;
+    font-weight:700;
+    color:var(--primary-dark);
 }
 
 .subtitle{
-    color:var(--petrol);
-    font-size:1.15rem;
-    font-weight:600;
-    margin-bottom:16px;
-}
-
-.hero-text{
-    max-width:420px;
-    margin:auto;
-    line-height:1.8;
-    color:#4f666a;
-    font-size:1.05rem;
+    margin-top:8px;
+    color:var(--text-light);
+    font-size:1rem;
+    letter-spacing:.5px;
 }
 
 .card{
-    background:rgba(255,255,255,.78);
-    backdrop-filter:blur(10px);
+    background:var(--card);
     border-radius:var(--radius);
     padding:24px;
     margin-bottom:18px;
     box-shadow:var(--shadow);
-    border:1px solid rgba(255,255,255,.6);
 }
 
 .section-title{
     font-family:'Playfair Display',serif;
-    color:var(--petrol);
-    font-size:1.55rem;
-    margin-bottom:16px;
+    font-size:1.4rem;
+    margin-bottom:14px;
+    color:var(--primary-dark);
+}
+
+.daily-title{
+    font-size:1.2rem;
+    font-weight:600;
+    margin-bottom:14px;
 }
 
 .quote{
     font-size:1.15rem;
-    line-height:1.9;
-    color:var(--petrol);
+    line-height:1.8;
+    color:var(--text);
     font-style:italic;
 }
 
 .text{
-    line-height:1.9;
-    font-size:1rem;
+    line-height:1.8;
+    color:var(--text);
 }
 
 .question{
-    line-height:1.8;
-    font-size:1.08rem;
+    font-size:1.1rem;
     font-weight:500;
+    line-height:1.6;
+}
+
+textarea{
+    width:100%;
+    min-height:180px;
+    resize:vertical;
+    border:none;
+    background:#faf8f7;
+    border-radius:18px;
+    padding:18px;
+    font-family:inherit;
+    font-size:1rem;
+    outline:none;
+    color:var(--text);
 }
 
 .actions{
     display:flex;
     flex-wrap:wrap;
     gap:12px;
-    margin-top:18px;
+    margin-top:16px;
 }
 
 button,
-a.btn{
+.share-btn,
+.instagram-btn{
     border:none;
     text-decoration:none;
     cursor:pointer;
-    border-radius:14px;
     padding:14px 18px;
+    border-radius:14px;
     font-size:.95rem;
     font-weight:600;
     transition:.25s;
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
 }
 
 .primary-btn{
-    background:var(--petrol);
+    background:var(--primary);
     color:white;
 }
 
 .primary-btn:hover{
-    transform:translateY(-2px);
+    background:var(--primary-dark);
 }
 
 .share-btn{
-    background:var(--water);
-    color:#08474d;
+    background:#efe2da;
+    color:var(--primary-dark);
+    padding:10px 14px;
+    font-size:.85rem;
 }
 
 .instagram-btn{
-    background:#fff;
-    color:var(--petrol);
-    border:1px solid rgba(14,106,114,.15);
-}
-
-textarea{
-    width:100%;
-    min-height:200px;
-    resize:vertical;
-    border:none;
-    border-radius:18px;
-    background:#fff;
-    padding:18px;
-    font-family:inherit;
-    font-size:1rem;
-    color:var(--text);
-    outline:none;
-    box-shadow:inset 0 0 0 1px rgba(14,106,114,.08);
-}
-
-textarea:focus{
-    box-shadow:
-    inset 0 0 0 2px rgba(14,106,114,.25);
-}
-
-.diary-list{
-    display:flex;
-    flex-direction:column;
-    gap:12px;
+    background:#f7edf0;
+    color:#b04c7a;
 }
 
 .entry{
-    background:#fff;
+    background:#faf7f5;
     border-radius:18px;
     padding:16px;
-    border-left:5px solid var(--water);
+    margin-bottom:12px;
 }
 
 .entry-date{
-    color:#6a7c7f;
     font-size:.85rem;
-    margin-bottom:10px;
+    color:var(--text-light);
+    margin-bottom:8px;
 }
 
 .entry-text{
     white-space:pre-wrap;
-    line-height:1.8;
+    line-height:1.7;
 }
 
 .delete-btn{
     margin-top:12px;
-    background:#f6f6f6;
-    color:#7b4c4c;
-    border:none;
-    padding:9px 12px;
+    background:#fff;
+    border:1px solid #e0d5cf;
+    color:#8a5d52;
+    padding:8px 12px;
     border-radius:10px;
     cursor:pointer;
 }
 
 .empty{
+    color:var(--text-light);
     text-align:center;
-    color:#7f8c8f;
     padding:10px;
 }
 
 footer{
     text-align:center;
-    padding:30px 15px;
-    color:#617579;
-    font-size:.95rem;
+    margin-top:30px;
+    padding-bottom:20px;
+    color:var(--text-light);
+    font-size:.9rem;
 }
 
-.fade-in{
-    animation:fade .5s ease;
-}
+@media (min-width:768px){
 
-@keyframes fade{
-    from{
-        opacity:0;
-        transform:translateY(8px);
-    }
-    to{
-        opacity:1;
-        transform:none;
-    }
-}
-
-@media(min-width:768px){
-
-    .container{
-        padding:35px;
+    body{
+        padding:30px;
     }
 
     h1{
-        font-size:4.5rem;
+        font-size:4rem;
     }
 
     .card{
         padding:30px;
     }
 
-    .hero-text{
-        font-size:1.15rem;
+    .actions{
+        justify-content:flex-start;
     }
 }
 </style>
@@ -280,273 +227,171 @@ footer{
 
 <div class="container">
 
-<div class="hero">
+    <div class="hero">
+        <img src="ali.png" alt="ALI" class="logo">
+        <h1>ALI</h1>
+        <div class="subtitle">La forza di volare</div>
+    </div>
 
-<img src="ali.png" alt="ALI" class="logo">
 
-<h1>ALI</h1>
 
-<div class="subtitle">
-La forza di volare
-</div>
+    <div class="card">
+        <div class="section-title">Consiglio della Coach</div>
+        <div id="frase" class="quote">
+            Caricamento...
+        </div>
 
-<div class="hero-text">
-Ritrova te stessa,<br>
-un passo alla volta.
-</div>
+        <div class="actions">
+            <button class="share-btn" onclick="condividiConsiglio()">
+                Condividi il consiglio
+            </button>
 
-</div>
+            <a
+                class="instagram-btn"
+                href="https://www.instagram.com/elisabettagatti_/"
+                target="_blank"
+                rel="noopener"
+            >
+                Segui Elisabetta
+            </a>
+        </div>
+    </div>
 
-<div class="card fade-in">
+    <div class="card">
+        <div class="section-title">Approfondimento</div>
+        <div id="testo" class="text">
+            Caricamento...
+        </div>
+    </div>
 
-<div class="section-title">
-Consiglio della Coach
-</div>
+    <div class="card">
+        <div class="section-title">Domanda del giorno</div>
+        <div id="domanda" class="question">
+            Caricamento...
+        </div>
+    </div>
 
-<div id="frase" class="quote">
-Caricamento...
-</div>
+    <div class="card">
+        <div class="section-title">Il mio spazio</div>
 
-<div class="actions">
+        <textarea
+            id="riflessione"
+            placeholder="Scrivi liberamente ciò che senti, pensi o desideri ricordare..."
+        ></textarea>
 
-<button
-class="share-btn"
-onclick="condividiConsiglio()">
-Condividi il consiglio
-</button>
+        <div class="actions">
+            <button class="primary-btn" onclick="salvaDiario()">
+                Salva nel diario
+            </button>
+        </div>
+    </div>
 
-<a
-class="btn instagram-btn"
-href="https://www.instagram.com/elisabettagatti_/"
-target="_blank"
-rel="noopener">
-Segui Elisabetta
-</a>
+    <div class="card">
+        <div class="section-title">Le mie riflessioni</div>
+        <div id="storico"></div>
+    </div>
 
-</div>
-
-</div>
-
-<div class="card fade-in">
-
-<div class="section-title">
-Approfondimento
-</div>
-
-<div id="testo" class="text">
-Caricamento...
-</div>
-
-</div>
-
-<div class="card fade-in">
-
-<div class="section-title">
-Domanda del giorno
-</div>
-
-<div id="domanda" class="question">
-Caricamento...
-</div>
-
-</div>
-
-<div class="card fade-in">
-
-<div class="section-title">
-Il mio spazio
-</div>
-
-<textarea
-id="riflessione"
-placeholder="Scrivi liberamente ciò che senti, pensi o desideri ricordare...">
-</textarea>
-
-<div class="actions">
-
-<button
-class="primary-btn"
-onclick="salvaDiario()">
-Salva nel diario
-</button>
+    <footer>
+        ALI • Un progetto di Elisabetta Gatti Coach
+    </footer>
 
 </div>
 
-</div>
-
-<div class="card fade-in">
-
-<div class="section-title">
-Le mie riflessioni
-</div>
-
-<div
-id="storico"
-class="diary-list">
-</div>
-
-</div>
-
-<footer>
-ALI • Un progetto di Elisabetta Gatti Coach
-</footer>
-
-</div>
-
-<script src="frasi.js?v=2"></script>
+<script src="frasi.js"></script>
     
 <script>
+/*
+Compatibile con frasi.js
 
-let contenuto = {
+Esempio:
+
+const frasi = [
+{
+    titolo:"...",
+    frase:"...",
+    testo:"...",
+    domanda:"..."
+}
+];
+*/
+
+let fraseDelGiorno = {
     titolo:"Benvenuta",
     frase:"Ogni giorno è una nuova possibilità.",
-    testo:"Inserisci il file frasi.js.",
-    domanda:"Qual è il primo passo che puoi fare oggi?"
+    testo:"Inserisci il file frasi.js per visualizzare i contenuti dinamici.",
+    domanda:"Qual è il primo piccolo passo che puoi fare oggi?"
 };
 
-function indiceGiorno(max){
-
+function ottieniIndiceDelGiorno(max){
     const oggi = new Date();
-
-    const inizio =
-    new Date(
-        oggi.getFullYear(),
-        0,
-        0
-    );
-
-    const diff =
-    oggi - inizio;
-
-    const giorno =
-    Math.floor(
-        diff / 86400000
-    );
-
+    const inizio = new Date(oggi.getFullYear(),0,0);
+    const diff = oggi - inizio;
+    const giorno = Math.floor(diff / 86400000);
     return giorno % max;
 }
 
-function caricaContenuto(){
+function caricaFraseDelGiorno(){
 
     if(
         typeof frasi !== "undefined" &&
         Array.isArray(frasi) &&
-        frasi.length
+        frasi.length > 0
     ){
-
-        contenuto =
-        frasi[
-            indiceGiorno(frasi.length)
+        fraseDelGiorno = frasi[
+            ottieniIndiceDelGiorno(frasi.length)
         ];
     }
 
-    document
-    .getElementById("frase")
 
-        .textContent =
-    contenuto.frase || "";
 
-    document
-    .getElementById("testo")
-    .textContent =
-    contenuto.testo || "";
+    document.getElementById("frase").textContent =
+        fraseDelGiorno.frase || "";
 
-    document
-    .getElementById("domanda")
-    .textContent =
-    contenuto.domanda || "";
+    document.getElementById("testo").textContent =
+        fraseDelGiorno.testo || "";
+
+    document.getElementById("domanda").textContent =
+        fraseDelGiorno.domanda || "";
 }
 
-function dataCorrente(){
+function getDataOggi(){
+    const oggi = new Date();
 
-    const oggi =
-    new Date();
-
-    return (
-        oggi.getFullYear() +
-        "-" +
-        String(
-            oggi.getMonth()+1
-        ).padStart(2,"0") +
-        "-" +
-        String(
-            oggi.getDate()
-        ).padStart(2,"0")
-    );
-}
-
-function oraCorrente(){
-
-    return new Date()
-    .toLocaleTimeString(
-        "it-IT",
-        {
-            hour:"2-digit",
-            minute:"2-digit",
-            second:"2-digit"
-        }
-    );
-}
-
-function escapeHtml(text){
-
-    const div =
-    document.createElement(
-        "div"
-    );
-
-    div.textContent =
-    text;
-
-    return div.innerHTML;
+    return oggi.getFullYear() + "-" +
+        String(oggi.getMonth()+1).padStart(2,"0") + "-" +
+        String(oggi.getDate()).padStart(2,"0");
 }
 
 function salvaDiario(){
 
-    const textarea =
-    document.getElementById(
-        "riflessione"
-    );
-
-    const testo =
-    textarea.value.trim();
+    const testo = document
+        .getElementById("riflessione")
+        .value
+        .trim();
 
     if(!testo){
-
-        alert(
-            "Scrivi una riflessione prima di salvare."
-        );
-
+        alert("Scrivi una riflessione prima di salvare.");
         return;
     }
 
     const archivio =
-    JSON.parse(
-        localStorage.getItem(
-            "ali_diario"
-        ) || "[]"
-    );
+        JSON.parse(
+            localStorage.getItem("ali_diario") || "[]"
+        );
 
     archivio.unshift({
-
-        id:Date.now(),
-
-        data:dataCorrente(),
-
-        ora:oraCorrente(),
-
-        testo:testo
-
+        id: Date.now(),
+        data: getDataOggi(),
+        ora: new Date().toLocaleTimeString("it-IT"),
+        testo
     });
 
     localStorage.setItem(
         "ali_diario",
-        JSON.stringify(
-            archivio
-        )
+        JSON.stringify(archivio)
     );
 
-    textarea.value = "";
+    document.getElementById("riflessione").value = "";
 
     renderDiario();
 }
@@ -554,22 +399,16 @@ function salvaDiario(){
 function eliminaVoce(id){
 
     const archivio =
-    JSON.parse(
-        localStorage.getItem(
-            "ali_diario"
-        ) || "[]"
-    );
+        JSON.parse(
+            localStorage.getItem("ali_diario") || "[]"
+        );
 
-    const nuovoArchivio =
-    archivio.filter(
-        voce => voce.id !== id
-    );
+    const nuovo =
+        archivio.filter(v => v.id !== id);
 
     localStorage.setItem(
         "ali_diario",
-        JSON.stringify(
-            nuovoArchivio
-        )
+        JSON.stringify(nuovo)
     );
 
     renderDiario();
@@ -577,171 +416,77 @@ function eliminaVoce(id){
 
 function renderDiario(){
 
-    const storico =
-    document.getElementById(
-        "storico"
-    );
+    const contenitore =
+        document.getElementById("storico");
 
     const archivio =
-    JSON.parse(
-        localStorage.getItem(
-            "ali_diario"
-        ) || "[]"
-    );
+        JSON.parse(
+            localStorage.getItem("ali_diario") || "[]"
+        );
 
-    if(
-        archivio.length === 0
-    ){
-
-        storico.innerHTML = `
-        <div class="empty">
-        Nessuna riflessione salvata.
-        </div>
-        `;
-
+    if(archivio.length === 0){
+        contenitore.innerHTML =
+            '<div class="empty">Nessuna riflessione salvata.</div>';
         return;
     }
 
-    let html = "";
-
-    archivio.forEach(
-        item => {
-
-        html += `
-
+    contenitore.innerHTML = archivio.map(item => `
         <div class="entry">
-
             <div class="entry-date">
-
-                ${item.data}
-                •
-                ${item.ora}
-
+                ${item.data} • ${item.ora}
             </div>
 
             <div class="entry-text">
-
-                ${escapeHtml(
-                    item.testo
-                )}
-
+                ${escapeHtml(item.testo)}
             </div>
 
             <button
-            class="delete-btn"
-            onclick="eliminaVoce(${item.id})">
-
+                class="delete-btn"
+                onclick="eliminaVoce(${item.id})"
+            >
                 Elimina
-
             </button>
-
         </div>
+    `).join("");
+}
 
-        `;
-    });
-
-    storico.innerHTML =
-    html;
+function escapeHtml(text){
+    const div = document.createElement("div");
+    div.textContent = text;
+    return div.innerHTML;
 }
 
 async function condividiConsiglio(){
 
-    const testoCondivisione =
+    const testo =
+`${fraseDelGiorno.frase}
 
-`${contenuto.frase}
+${fraseDelGiorno.domanda}
 
-${contenuto.domanda}
-
-ALI • La forza di volare`;
+ALI - La forza di volare`;
 
     if(
         navigator.share
     ){
-
         try{
-
             await navigator.share({
-
                 title:"ALI",
-
-                text:testoCondivisione
-
+                text:testo
             });
-
-        }
-        catch(error){
-
-            console.log(error);
-
-        }
-
-    }
-    else{
+        }catch(e){}
+    }else{
 
         try{
-
-            await navigator
-            .clipboard
-            .writeText(
-                testoCondivisione
-            );
-
-            alert(
-                "Consiglio copiato negli appunti."
-            );
-
-        }
-        catch(error){
-
-            alert(
-                testoCondivisione
-            );
-
+            await navigator.clipboard.writeText(testo);
+            alert("Consiglio copiato negli appunti.");
+        }catch(e){
+            alert(testo);
         }
     }
 }
 
-function registraServiceWorker(){
-
-    if(
-        "serviceWorker"
-        in navigator
-    ){
-
-        window.addEventListener(
-            "load",
-
-                        () => {
-
-                if(
-                    !location.protocol.startsWith(
-                        "http"
-                    )
-                ){
-                    return;
-                }
-
-                navigator
-                .serviceWorker
-                .getRegistrations()
-                .catch(() => {});
-            }
-        );
-    }
-}
-
-function inizializza(){
-
-    caricaContenuto();
-
-    renderDiario();
-
-    registraServiceWorker();
-}
-
-    inizializza();
-);
-
+caricaFraseDelGiorno();
+renderDiario();
 </script>
 
 </body>
