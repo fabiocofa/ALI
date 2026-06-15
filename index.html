@@ -570,3 +570,406 @@ Segui Elisabetta
 </div>
 
 </div>
+
+<div class="card">
+
+<div class="section-label">
+Approfondimento
+</div>
+
+<div class="section-title">
+Uno spazio per osservare con più chiarezza
+</div>
+
+<div id="testo" class="text">
+Caricamento...
+</div>
+
+</div>
+
+<div class="card question-card">
+
+<div class="section-label">
+Domanda del giorno
+</div>
+
+<div class="section-title">
+Fermati un momento
+</div>
+
+<div id="domanda" class="question">
+Caricamento...
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="section-label">
+Il mio spazio
+</div>
+
+<div class="section-title">
+Scrivi ciò che senti
+</div>
+
+<textarea
+id="riflessione"
+placeholder="Scrivi liberamente ciò che senti, pensi o desideri ricordare...">
+</textarea>
+
+<div
+class="actions"
+style="justify-content:flex-start;">
+
+<button
+class="primary-btn"
+onclick="salvaDiario()">
+Salva nel diario
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="section-label">
+Le mie riflessioni
+</div>
+
+<div class="section-title">
+Il mio diario personale
+</div>
+
+<div id="storico">
+
+</div>
+
+</div>
+
+<footer
+style="
+text-align:center;
+padding:20px 0 40px;
+color:#647478;
+font-size:.95rem;
+">
+
+ALI • Un progetto di Elisabetta Gatti Coach
+
+</footer>
+
+</div>
+
+<script src="frasi.js"></script>
+
+<script>
+
+/*
+Compatibile con:
+
+const frasi = [
+{
+titolo:"",
+frase:"",
+testo:"",
+domanda:""
+}
+];
+
+*/
+
+let fraseDelGiorno = {
+
+titolo:"Benvenuta",
+
+frase:"Ogni giorno è una nuova possibilità.",
+
+testo:"Inserisci il file frasi.js per visualizzare i contenuti dinamici.",
+
+domanda:"Qual è il primo piccolo passo che puoi fare oggi?"
+
+};
+
+function ottieniIndiceDelGiorno(max){
+
+const oggi = new Date();
+
+const inizio =
+new Date(
+oggi.getFullYear(),
+0,
+0
+);
+
+const diff =
+oggi - inizio;
+
+const giorno =
+Math.floor(
+diff / 86400000
+);
+
+return giorno % max;
+}
+
+function caricaFraseDelGiorno(){
+
+if(
+typeof frasi !== "undefined" &&
+Array.isArray(frasi) &&
+frasi.length > 0
+){
+
+fraseDelGiorno =
+frasi[
+ottieniIndiceDelGiorno(
+frasi.length
+)
+];
+
+}
+
+document
+.getElementById("frase")
+.textContent =
+fraseDelGiorno.frase || "";
+
+document
+.getElementById("testo")
+.textContent =
+fraseDelGiorno.testo || "";
+
+document
+.getElementById("domanda")
+.textContent =
+fraseDelGiorno.domanda || "";
+}
+
+function getDataOggi(){
+
+const oggi = new Date();
+
+return oggi.getFullYear() +
+"-" +
+String(
+oggi.getMonth()+1
+).padStart(2,"0") +
+"-" +
+String(
+oggi.getDate()
+).padStart(2,"0");
+}
+
+function escapeHtml(text){
+
+const div =
+document.createElement(
+"div"
+);
+
+div.textContent =
+text;
+
+return div.innerHTML;
+}
+
+function salvaDiario(){
+
+const testo =
+document
+.getElementById(
+"riflessione"
+)
+.value
+.trim();
+
+if(!testo){
+
+alert(
+"Scrivi una riflessione prima di salvare."
+);
+
+return;
+}
+
+const archivio =
+JSON.parse(
+localStorage.getItem(
+"ali_diario"
+) || "[]"
+);
+
+archivio.unshift({
+
+id:Date.now(),
+
+data:getDataOggi(),
+
+ora:new Date()
+.toLocaleTimeString(
+"it-IT"
+),
+
+testo
+
+});
+
+localStorage.setItem(
+"ali_diario",
+JSON.stringify(
+archivio
+)
+);
+
+document
+.getElementById(
+"riflessione"
+)
+.value = "";
+
+renderDiario();
+}
+
+function eliminaVoce(id){
+
+const archivio =
+JSON.parse(
+localStorage.getItem(
+"ali_diario"
+) || "[]"
+);
+
+const nuovo =
+archivio.filter(
+v => v.id !== id
+);
+
+localStorage.setItem(
+"ali_diario",
+JSON.stringify(
+nuovo
+)
+);
+
+renderDiario();
+}
+
+function renderDiario(){
+
+const contenitore =
+document.getElementById(
+"storico"
+);
+
+const archivio =
+JSON.parse(
+localStorage.getItem(
+"ali_diario"
+) || "[]"
+);
+
+if(
+archivio.length === 0
+){
+
+contenitore.innerHTML =
+'<div class="empty">Nessuna riflessione salvata.</div>';
+
+return;
+}
+
+contenitore.innerHTML =
+archivio.map(
+item => `
+<div class="entry">
+
+<div class="entry-date">
+${item.data}
+•
+${item.ora}
+</div>
+
+<div class="entry-text">
+${escapeHtml(
+item.testo
+)}
+</div>
+
+<button
+class="delete-btn"
+onclick="eliminaVoce(${item.id})">
+Elimina
+</button>
+
+</div>
+`
+).join("");
+}
+
+async function condividiConsiglio(){
+
+const testo =
+`${fraseDelGiorno.frase}
+
+${fraseDelGiorno.domanda}
+
+ALI • La forza di volare`;
+
+if(
+navigator.share
+){
+
+try{
+
+await navigator.share({
+
+title:"ALI",
+
+text:testo
+
+});
+
+}catch(e){}
+
+}else{
+
+try{
+
+await navigator
+.clipboard
+.writeText(
+testo
+);
+
+alert(
+"Consiglio copiato negli appunti."
+);
+
+}catch(e){
+
+alert(
+testo
+);
+
+}
+}
+}
+function inizializza(){
+
+caricaFraseDelGiorno();
+
+renderDiario();
+
+}
+
+document.addEventListener(
+"DOMContentLoaded",
+inizializza
+);
+
+</script>
+
+</body>
+</html>
