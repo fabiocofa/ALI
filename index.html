@@ -83,11 +83,29 @@ h1{
 }
 
 .card{
-    background:var(--card);
-    border-radius:var(--radius);
+    position:relative;
+    background:rgba(255,255,255,0.92);
+    border-radius:28px;
     padding:24px;
-    margin-bottom:18px;
-    box-shadow:var(--shadow);
+    margin-bottom:22px;
+    box-shadow:
+        0 12px 35px rgba(14,106,114,.08),
+        0 2px 8px rgba(0,0,0,.03);
+    overflow:hidden;
+    backdrop-filter:blur(8px);
+
+    .card::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:6px;
+    background:linear-gradient(
+        90deg,
+        #0E6A72,
+        #7FCFD1
+    );
 }
 
 .section-title{
