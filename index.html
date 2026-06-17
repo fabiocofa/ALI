@@ -284,6 +284,10 @@ button,
     color:var(--petrol-dark);
 }
 
+.hidden{
+    display:none;
+}
+
 @media (min-width:768px){
 
     .container{
@@ -398,6 +402,57 @@ Caricamento...
 
 </div>
 
+<div class="card">
+
+<div class="section-label">
+📋 Test e Autovalutazioni
+</div>
+
+<div class="section-title">
+Conosci meglio te stessa
+</div>
+
+<div class="text" style="margin-bottom:24px;">
+Strumenti di riflessione pensati per aiutarti a sviluppare maggiore consapevolezza personale e relazionale.
+</div>
+
+<div style="margin-bottom:24px;">
+
+<h3 style="
+margin-bottom:12px;
+color:var(--petrol-dark);">
+❤️ Sei davvero te stessa nella tua relazione?
+</h3>
+
+<button
+class="instagram-btn"
+onclick="toggleCheckRelazione()">
+Inizia il test
+</button>
+
+</div>
+
+<div>
+
+<h3 style="
+margin-bottom:12px;
+color:var(--petrol-dark);">
+✨ Quanto credi in te stessa?
+</h3>
+
+<button
+class="instagram-btn"
+onclick="toggleTestAutostima()">
+Inizia il test
+</button>
+
+</div>
+
+</div>
+
+<div
+id="areaCheckRelazione"
+class="hidden">
 
 <div class="card">
 
@@ -409,20 +464,9 @@ Caricamento...
 Quanto sei te stessa nella tua relazione?
 </div>
 
-<div class="text" style="margin-bottom:20px;">
-Uno strumento di consapevolezza per aiutarti a riflettere sul tuo rapporto di coppia.
+<div class="text" style="margin-bottom:24px;">
+Rispondi sinceramente alle domande e scopri quali aspetti della tua relazione meritano maggiore attenzione.
 </div>
-
-<button
-class="instagram-btn"
-type="button"
-onclick="toggleCheckRelazione()">
-Autovalutazione
-</button>
-
-<div
-id="areaCheckRelazione"
-style="display:none;margin-top:24px;">
 
 <div id="checkRelazione"></div>
 
@@ -430,7 +474,6 @@ style="display:none;margin-top:24px;">
 
 <button
 class="instagram-btn"
-type="button"
 onclick="calcolaCheckRelazione()">
 Calcola il risultato
 </button>
@@ -445,8 +488,45 @@ style="display:none;margin-top:24px;">
 </div>
 
 </div>
-```
 
+<div
+id="areaTestAutostima"
+class="hidden">
+
+<div class="card">
+
+<div class="section-label">
+✨ Test Autostima
+</div>
+
+<div class="section-title">
+Quanto credi in te stessa?
+</div>
+
+<div class="text" style="margin-bottom:24px;">
+Rispondi con sincerità. Questo test non rappresenta una diagnosi ma uno strumento di riflessione per comprendere meglio il rapporto che hai con te stessa.
+</div>
+
+<div id="testAutostimaDomande"></div>
+
+<div style="margin-top:24px;">
+
+<button
+class="instagram-btn"
+onclick="calcolaTestAutostima()">
+Calcola il risultato
+</button>
+
+</div>
+
+<div
+id="risultatoAutostima"
+style="display:none;margin-top:24px;">
+</div>
+
+</div>
+
+</div>
 
 <div class="card">
 
@@ -572,8 +652,7 @@ function caricaFraseDelGiorno(){
 
 function getDataOggi(){
 
-    const oggi =
-    new Date();
+    const oggi = new Date();
 
     return oggi.getFullYear() +
     "-" +
@@ -589,12 +668,9 @@ function getDataOggi(){
 function escapeHtml(text){
 
     const div =
-    document.createElement(
-        "div"
-    );
+    document.createElement("div");
 
-    div.textContent =
-    text;
+    div.textContent = text;
 
     return div.innerHTML;
 }
@@ -603,16 +679,14 @@ function salvaDiario(){
 
     const testo =
     document
-    .getElementById(
-        "riflessione"
-    )
+    .getElementById("riflessione")
     .value
     .trim();
 
     if(!testo){
 
         alert(
-            "Scrivi una riflessione prima di salvare."
+        "Scrivi una riflessione prima di salvare."
         );
 
         return;
@@ -620,9 +694,9 @@ function salvaDiario(){
 
     const archivio =
     JSON.parse(
-        localStorage.getItem(
-            "ali_diario"
-        ) || "[]"
+    localStorage.getItem(
+    "ali_diario"
+    ) || "[]"
     );
 
     archivio.unshift({
@@ -632,49 +706,42 @@ function salvaDiario(){
         data:getDataOggi(),
 
         ora:new Date()
-        .toLocaleTimeString(
-            "it-IT"
-        ),
+        .toLocaleTimeString("it-IT"),
 
         testo
 
     });
 
     localStorage.setItem(
-        "ali_diario",
-        JSON.stringify(
-            archivio
-        )
+    "ali_diario",
+    JSON.stringify(archivio)
     );
 
     document
-    .getElementById(
-        "riflessione"
-    )
+    .getElementById("riflessione")
     .value = "";
 
     renderDiario();
 }
 
+
 function eliminaVoce(id){
 
     const archivio =
     JSON.parse(
-        localStorage.getItem(
-            "ali_diario"
-        ) || "[]"
+    localStorage.getItem(
+    "ali_diario"
+    ) || "[]"
     );
 
     const nuovo =
     archivio.filter(
-        v => v.id !== id
+    v => v.id !== id
     );
 
     localStorage.setItem(
-        "ali_diario",
-        JSON.stringify(
-            nuovo
-        )
+    "ali_diario",
+    JSON.stringify(nuovo)
     );
 
     renderDiario();
@@ -684,66 +751,66 @@ function renderDiario(){
 
     const contenitore =
     document.getElementById(
-        "storico"
+    "storico"
     );
 
     const archivio =
     JSON.parse(
-        localStorage.getItem(
-            "ali_diario"
-        ) || "[]"
+    localStorage.getItem(
+    "ali_diario"
+    ) || "[]"
     );
 
-    if(
-        archivio.length === 0
-    ){
+    if(archivio.length === 0){
 
         contenitore.innerHTML =
-        '<div>Nessuna riflessione salvata.</div>';
+        "<div>Nessuna riflessione salvata.</div>";
 
         return;
     }
 
     contenitore.innerHTML =
-    archivio.map(
-        item => `
+    archivio.map(item => `
 
-        <div class="entry">
+    <div style="
+    background:white;
+    padding:16px;
+    border-radius:14px;
+    margin-bottom:12px;">
 
-            <div style="
-            font-size:.85rem;
-            color:#647478;
-            margin-bottom:8px;">
-            ${item.data} • ${item.ora}
-            </div>
-
-            <div style="
-            white-space:pre-wrap;
-            line-height:1.7;">
-            ${escapeHtml(item.testo)}
-            </div>
-
-            <button
-            onclick="eliminaVoce(${item.id})"
-            style="
-            margin-top:12px;
-            border:none;
-            background:#fff;
-            padding:8px 12px;
-            border-radius:10px;
-            cursor:pointer;">
-            Elimina
-            </button>
-
+        <div style="
+        font-size:.85rem;
+        color:#647478;
+        margin-bottom:8px;">
+        ${item.data} • ${item.ora}
         </div>
 
-        `
-    ).join("");
+        <div style="
+        white-space:pre-wrap;
+        line-height:1.7;">
+        ${escapeHtml(item.testo)}
+        </div>
+
+        <button
+        onclick="eliminaVoce(${item.id})"
+        style="
+        margin-top:12px;
+        border:none;
+        background:#EFE2D5;
+        padding:8px 12px;
+        border-radius:10px;
+        cursor:pointer;">
+        Elimina
+        </button>
+
+    </div>
+
+    `).join("");
 }
 
 async function condividiConsiglio(){
 
-    const testo =
+const testo =
 
 `${fraseDelGiorno.frase}
 
@@ -751,41 +818,39 @@ ${fraseDelGiorno.domanda}
 
 ALI - La forza di volare`;
 
-    if(navigator.share){
+if(navigator.share){
 
-        try{
+    try{
 
-            await navigator.share({
+        await navigator.share({
+            title:"ALI",
+            text:testo
+        });
 
-                title:"ALI",
+    }catch(e){}
 
-                text:testo
+}else{
 
-            });
+    try{
 
-        }catch(e){}
+        await navigator.clipboard.writeText(
+        testo
+        );
 
-    }else{
+        alert(
+        "Consiglio copiato negli appunti."
+        );
 
-        try{
+    }catch(e){
 
-            await navigator
-            .clipboard
-            .writeText(testo);
+        alert(testo);
 
-            alert(
-            "Consiglio copiato negli appunti."
-            );
-
-        }catch(e){
-
-            alert(testo);
-
-        }
     }
 }
 
-/* CHECK RELAZIONE */
+}
+
+/* APERTURA TEST */
 
 function toggleCheckRelazione(){
 
@@ -794,18 +859,56 @@ document.getElementById(
 "areaCheckRelazione"
 );
 
-if(area.style.display === "none"){
+area.classList.toggle(
+"hidden"
+);
 
-area.style.display = "block";
-
-}else{
-
-area.style.display = "none";
-
+if(
+!area.classList.contains(
+"hidden"
+)
+){
+area.scrollIntoView({
+behavior:"smooth"
+});
 }
 
 }
-    
+
+function toggleTestAutostima(){
+
+const area =
+document.getElementById(
+"areaTestAutostima"
+);
+
+area.classList.toggle(
+"hidden"
+);
+
+if(
+!area.classList.contains(
+"hidden"
+)
+){
+
+if(
+document.getElementById(
+"testAutostimaDomande"
+).innerHTML === ""
+){
+generaTestAutostima();
+}
+
+area.scrollIntoView({
+behavior:"smooth"
+});
+}
+
+}
+
+/* TEST RELAZIONE */
+
 const domandeRelazione = [
 
 "Mi sento ascoltata quando esprimo i miei bisogni.",
@@ -825,208 +928,295 @@ const domandeRelazione = [
 
 function generaCheckRelazione(){
 
-    const container =
-    document.getElementById(
-        "checkRelazione"
-    );
+const container =
+document.getElementById(
+"checkRelazione"
+);
 
-    if(!container) return;
+container.innerHTML =
+domandeRelazione.map(
+(domanda,index)=>`
 
-    container.innerHTML =
-    domandeRelazione.map(
-        (domanda,index)=>`
+<div style="
+margin-bottom:20px;
+padding-bottom:16px;
+border-bottom:1px solid rgba(0,0,0,.08);">
 
-        <div style="
-        margin-bottom:20px;
-        padding-bottom:16px;
-        border-bottom:1px solid rgba(0,0,0,.08);">
+<div style="
+font-weight:600;
+margin-bottom:10px;">
+${index+1}. ${domanda}
+</div>
 
-            <div style="
-            font-weight:600;
-            margin-bottom:10px;
-            line-height:1.6;">
-            ${index+1}. ${domanda}
-            </div>
+<label><input type="radio" name="r${index}" value="0"> Mai</label><br>
+<label><input type="radio" name="r${index}" value="1"> Raramente</label><br>
+<label><input type="radio" name="r${index}" value="2"> A volte</label><br>
+<label><input type="radio" name="r${index}" value="3"> Spesso</label><br>
+<label><input type="radio" name="r${index}" value="4"> Sempre</label>
 
-            <div style="
-            display:flex;
-            flex-wrap:wrap;
-            gap:10px;">
+</div>
 
-                <label><input type="radio" name="r${index}" value="0"> Mai</label>
-                <label><input type="radio" name="r${index}" value="1"> Raramente</label>
-                <label><input type="radio" name="r${index}" value="2"> A volte</label>
-                <label><input type="radio" name="r${index}" value="3"> Spesso</label>
-                <label><input type="radio" name="r${index}" value="4"> Sempre</label>
+`
+).join("");
 
-            </div>
-
-        </div>
-
-    `).join("");
 }
 
 function calcolaCheckRelazione(){
 
-    let totale = 0;
+let totale = 0;
 
-    for(
-        let i=0;
-        i<domandeRelazione.length;
-        i++
-    ){
+for(let i=0;i<12;i++){
 
-        const risposta =
-        document.querySelector(
-        'input[name="r'+i+'"]:checked'
-        );
+const risposta =
+document.querySelector(
+'input[name="r'+i+'"]:checked'
+);
 
-        if(!risposta){
+if(!risposta){
 
-            alert(
-            "Rispondi a tutte le domande."
-            );
+alert(
+"Rispondi a tutte le domande."
+);
 
-            return;
-        }
+return;
+}
 
-        totale +=
-        Number(
-            risposta.value
-        );
-    }
+totale +=
+Number(risposta.value);
 
-    const box =
-    document.getElementById(
-        "risultatoRelazione"
-    );
+}
 
-    let colore =
-    "#4D9A63";
+let titolo =
+"Relazione equilibrata";
 
-    let titolo =
-    "Relazione equilibrata";
+let testo =
+"La tua relazione mostra basi solide. Continua a coltivare dialogo, ascolto e crescita reciproca.";
 
-    let testo =
-    "La tua relazione mostra basi solide. Continua a coltivare dialogo, ascolto e crescita reciproca.";
+let colore =
+"#4D9A63";
 
-    let cta = "";
+if(totale >= 26 && totale <= 37){
 
-    if(
-        totale >= 26 &&
-        totale <= 37
-    ){
+titolo =
+"Alcuni aspetti meritano attenzione";
 
-        colore =
-        "#C9A227";
+testo =
+"La relazione presenta diversi punti positivi ma anche aree che meritano confronto e consapevolezza.";
 
-        titolo =
-        "Alcuni aspetti meritano attenzione";
+colore =
+"#C9A227";
 
-        testo =
-        "La relazione presenta diversi punti positivi ma anche aree che meritano confronto e consapevolezza.";
+}
 
-    }
+if(totale >= 15 && totale <= 25){
 
-    if(
-        totale >= 15 &&
-        totale <= 25
-    ){
+titolo =
+"È il momento di fermarsi a riflettere";
 
-        colore =
-        "#D9822B";
+testo =
+"Alcuni bisogni importanti potrebbero non essere pienamente soddisfatti.";
 
-        titolo =
-        "È il momento di fermarsi a riflettere";
+colore =
+"#D9822B";
 
-        testo =
-        "Alcuni bisogni importanti potrebbero non essere pienamente soddisfatti. Dedica tempo ad ascoltare ciò che senti davvero.";
+}
 
-        cta = `
-        <div style="margin-top:16px;">
-        🌿 Vuoi approfondire questi aspetti?<br><br>
+if(totale <= 14){
 
-        <a
-        href="https://www.instagram.com/elisabettagatti_/"
-        target="_blank"
-        style="
-        background:white;
-        color:#333;
-        text-decoration:none;
-        padding:10px 14px;
-        border-radius:10px;
-        display:inline-block;">
-        Contatta Elisabetta
-        </a>
-        </div>
-        `;
-    }
+titolo =
+"La tua relazione richiede attenzione";
 
-    if(
-        totale >= 0 &&
-        totale <= 14
-    ){
+testo =
+"Potrebbero esserci dinamiche che stanno influenzando il tuo benessere emotivo.";
 
-        colore =
-        "#C94A4A";
+colore =
+"#C94A4A";
 
-        titolo =
-        "La tua relazione richiede attenzione";
+}
 
-        testo =
-        "Potrebbero esserci dinamiche che stanno influenzando il tuo benessere emotivo. Un confronto con una professionista potrebbe aiutarti a fare chiarezza.";
+document.getElementById(
+"risultatoRelazione"
+).style.display = "block";
 
-        cta = `
-        <div style="margin-top:16px;">
-        🌿 Vuoi approfondire questi aspetti?<br><br>
+document.getElementById(
+"risultatoRelazione"
+).innerHTML =
 
-        <a
-        href="https://www.instagram.com/elisabettagatti_/"
-        target="_blank"
-        style="
-        background:white;
-        color:#333;
-        text-decoration:none;
-        padding:10px 14px;
-        border-radius:10px;
-        display:inline-block;">
-        Contatta Elisabetta
-        </a>
-        </div>
-        `;
-    }
+`<div style="
+background:${colore};
+color:white;
+padding:20px;
+border-radius:18px;">
 
-    box.style.display =
-    "block";
+<h3>${titolo}</h3>
 
-    box.innerHTML =
+<p>
+Punteggio:
+<strong>${totale}/48</strong>
+</p>
 
-    `<div style="
-    background:${colore};
-    color:white;
-    padding:20px;
-    border-radius:18px;">
+<p style="margin-top:10px;">
+${testo}
+</p>
 
-        <h3 style="margin-bottom:12px;">
-        ${titolo}
-        </h3>
+</div>`;
 
-        <p>
-        Punteggio:
-        <strong>
-        ${totale}/48
-        </strong>
-        </p>
+}
 
-        <p style="
-        margin-top:10px;
-        line-height:1.7;">
-        ${testo}
-        </p>
+/* TEST AUTOSTIMA */
 
-        ${cta}
+const domandeAutostima = [
 
-    </div>`;
+"Mi sento una persona di valore indipendentemente dall'approvazione degli altri.",
+"Mi sento libera di esprimere la mia opinione.",
+"Riconosco i miei successi senza minimizzarli.",
+"Accetto i miei errori senza definirmi attraverso essi.",
+"Mi sento all'altezza delle sfide che affronto.",
+"So dire di no quando qualcosa non mi fa stare bene.",
+"Mi confronto raramente con gli altri.",
+"Mi prendo cura dei miei bisogni senza sentirmi in colpa.",
+"Mi sento degna di amore e rispetto.",
+"Credo di meritare relazioni sane e rispettose.",
+"Riesco a riconoscere le mie qualità.",
+"Mi fido delle decisioni che prendo."
+
+];
+
+function generaTestAutostima(){
+
+const container =
+document.getElementById(
+"testAutostimaDomande"
+);
+
+container.innerHTML =
+domandeAutostima.map(
+(domanda,index)=>`
+
+<div style="
+margin-bottom:20px;
+padding-bottom:16px;
+border-bottom:1px solid rgba(0,0,0,.08);">
+
+<div style="
+font-weight:600;
+margin-bottom:10px;">
+${index+1}. ${domanda}
+</div>
+
+<label><input type="radio" name="a${index}" value="0"> Mai</label><br>
+<label><input type="radio" name="a${index}" value="1"> Raramente</label><br>
+<label><input type="radio" name="a${index}" value="2"> A volte</label><br>
+<label><input type="radio" name="a${index}" value="3"> Spesso</label><br>
+<label><input type="radio" name="a${index}" value="4"> Sempre</label>
+
+</div>
+
+`
+).join("");
+
+}
+
+function calcolaTestAutostima(){
+
+let totale = 0;
+
+for(let i=0;i<12;i++){
+
+const risposta =
+document.querySelector(
+'input[name="a'+i+'"]:checked'
+);
+
+if(!risposta){
+
+alert(
+"Rispondi a tutte le domande."
+);
+
+return;
+}
+
+totale +=
+Number(risposta.value);
+
+}
+
+let titolo = "";
+let testo = "";
+let colore = "";
+
+if(totale >= 38){
+
+titolo = "🌿 Fiducia solida";
+colore = "#4D9A63";
+testo = "Hai una buona consapevolezza del tuo valore.";
+
+}else if(totale >= 26){
+
+titolo = "🌱 Fiducia da rafforzare";
+colore = "#C9A227";
+testo = "Possiedi buone basi ma alcuni aspetti meritano attenzione.";
+
+}else if(totale >= 15){
+
+titolo = "🌤 Stai dimenticando il tuo valore";
+colore = "#D9822B";
+testo = "Potresti dare troppo peso ai giudizi esterni.";
+
+}else{
+
+titolo = "❤️ È tempo di tornare a te";
+colore = "#C94A4A";
+testo = "La fiducia in te stessa potrebbe essere fragile.";
+
+}
+
+document.getElementById(
+"risultatoAutostima"
+).style.display = "block";
+
+document.getElementById(
+"risultatoAutostima"
+).innerHTML =
+
+`<div style="
+background:${colore};
+color:white;
+padding:20px;
+border-radius:18px;">
+
+<h3>${titolo}</h3>
+
+<p>
+Punteggio:
+<strong>${totale}/48</strong>
+</p>
+
+<p style="margin-top:10px;">
+${testo}
+</p>
+
+<p style="margin-top:16px;">
+Qualunque sia il tuo risultato, ricorda che l'autostima non è una caratteristica fissa ma una relazione che puoi coltivare ogni giorno.
+</p>
+
+<a
+href="https://www.instagram.com/elisabettagatti_/"
+target="_blank"
+style="
+display:inline-block;
+margin-top:18px;
+background:white;
+color:#333;
+padding:12px 18px;
+border-radius:10px;
+text-decoration:none;">
+💬 Contatta Elisabetta
+</a>
+
+</div>`;
+
 }
 
 caricaFraseDelGiorno();
